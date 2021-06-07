@@ -1,3 +1,4 @@
+from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
@@ -11,6 +12,11 @@ def signupfunc(request):
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
-        user = User.objects.create_user(username=username, password=password)
+        try:
+            user = User.objects.create_user(username=username, password=password)
+            return render(request, "signup.html", {})  
+
+        except IntegrityError:
+            return render(request, "signup.html", {"error": "User already existed"})
 
     return render(request, "signup.html", {})  # 第三引数にhtmlへ渡す変数定数を書くことができる。
