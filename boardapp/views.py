@@ -4,10 +4,13 @@ from django.contrib.auth.models import User
 
 
 def signupfunc(request):
-    object = User.objects.get(username="super")  # objects.allでUser全員を指定可能
-    print(object.date_joined)  # いろんなプロパティを指定ができるよ！
-    if request.method == "POST":  # methodを受け取ることが可能
-        print("this is post method")
-    else:
-        print("this is not post method")
+    # print(request.POST) 送信されたPOSTの中身が見られる
+    # この下の記述はあえて仕組みがわかるように書くためのもので本来はもっと便利な書き方がある
+    # print(request.POST["username"])  # html内のinputのnameがまんまPOSTの中身になっているので注意！
+    # print(request.POST["password"])
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = User.objects.create_user(username=username, password=password)
+
     return render(request, "signup.html", {})  # 第三引数にhtmlへ渡す変数定数を書くことができる。
