@@ -15,7 +15,7 @@ def signupfunc(request):
         password = request.POST["password"]
         try:
             user = User.objects.create_user(username=username, password=password)
-            return redirect("/login") # redirectの引数は数種類あり。
+            return redirect("/list") # redirectの引数は数種類あり。
 
         except IntegrityError:
             return render(request, "signup.html", {"error": "User already existed"})
@@ -30,7 +30,11 @@ def loginfunc(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, "login.html", {"context": "logged in!"})
+            return render(request, "list.html", {})
         else:
-            return render(request, "login.html", {"context": "not log in!"})
+            return render(request, "list.html", {})
     return render(request, "login.html", {"error": "get method"})
+
+
+def listfunc(request):
+    return render(request, "list.html", {})
