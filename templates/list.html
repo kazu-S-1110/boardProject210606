@@ -10,12 +10,14 @@
 
 {% block content %}
 <div class="container">
+  {% for item in object_list %}
   <div class="alert alert-info" role="alert">
-    <p>title: </p>
-    <p>contributor: </p>
+    <p>title: {{item.title}} </p>
+    <p>contributor: {{item.contributor}} </p>
     <a href="#" class="btn btn-primary" role="button" aria-pressed="true">Primary link</a>
     <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">Link</a>
   </div>  
+  {% endfor %}
 </div>
 
 {% endblock content %}

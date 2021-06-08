@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
+from boardapp.models import BoardModel
+
 
 def signupfunc(request):
     # print(request.POST) 送信されたPOSTの中身が見られる
@@ -15,7 +17,7 @@ def signupfunc(request):
         password = request.POST["password"]
         try:
             user = User.objects.create_user(username=username, password=password)
-            return redirect("/list") # redirectの引数は数種類あり。
+            return redirect("/list")  # redirectの引数は数種類あり。
 
         except IntegrityError:
             return render(request, "signup.html", {"error": "User already existed"})
@@ -37,4 +39,6 @@ def loginfunc(request):
 
 
 def listfunc(request):
-    return render(request, "list.html", {})
+    object_list = BoardModel.objects.all()
+    return render(request, "list.html",
+                  {"object_list": object_list})  # object_listというキーでBoardModelのオブジェクトを参照できるよう第三引数に指定。
