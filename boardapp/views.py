@@ -1,7 +1,7 @@
 from django.contrib.auth import authenticate, login
 from django.db import IntegrityError
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
 
@@ -15,7 +15,7 @@ def signupfunc(request):
         password = request.POST["password"]
         try:
             user = User.objects.create_user(username=username, password=password)
-            return render(request, "signup.html", {})
+            return redirect("/login") # redirectの引数は数種類あり。
 
         except IntegrityError:
             return render(request, "signup.html", {"error": "User already existed"})
@@ -33,4 +33,4 @@ def loginfunc(request):
             return render(request, "login.html", {"context": "logged in!"})
         else:
             return render(request, "login.html", {"context": "not log in!"})
-    return render(request, "signup.html", {"error": "get method"})
+    return render(request, "login.html", {"error": "get method"})
