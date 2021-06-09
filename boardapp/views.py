@@ -38,7 +38,7 @@ def loginfunc(request):
     return render(request, "login.html", {})
 
 
-@login_required  # デコレータを定義する。デコレータとは関数が走る前に走らせるもの。
+# @login_required  # デコレータを定義する。デコレータとは関数が走る前に走らせるもの。
 def listfunc(request):
     object_list = BoardModel.objects.all()
     return render(request, "list.html",
