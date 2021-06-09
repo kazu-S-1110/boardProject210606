@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+{% load static %}   <!-- このファイルに静的ファイルの存在を知らせるためのコード -->
+
+{% block customcss %}
+  <link rel="stylesheet" href="{% static 'signin.css' %}">
+{% endblock customcss %}
+
 
 {% block content %}
   

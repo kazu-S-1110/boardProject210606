@@ -3,7 +3,7 @@ from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-
+from django.contrib.auth.decorators import login_required
 from boardapp.models import BoardModel
 
 
@@ -32,12 +32,13 @@ def loginfunc(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return render(request, "list.html", {})
+            return redirect("list")
         else:
             return render(request, "list.html", {})
-    return render(request, "login.html", {"error": "get method"})
+    return render(request, "login.html", {})
 
 
+@login_required  # デコレータを定義する。デコレータとは関数が走る前に走らせるもの。
 def listfunc(request):
     object_list = BoardModel.objects.all()
     return render(request, "list.html",
