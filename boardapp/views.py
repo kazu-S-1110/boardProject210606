@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -34,12 +34,17 @@ def loginfunc(request):
             login(request, user)
             return redirect("list")
         else:
-            return render(request, "list.html", {})
+            return render(request, "signup.html", {"error": "not logged in"})
     return render(request, "login.html", {})
 
 
-# @login_required  # デコレータを定義する。デコレータとは関数が走る前に走らせるもの。
+@login_required  # デコレータを定義する。デコレータとは関数が走る前に走らせるもの。
 def listfunc(request):
     object_list = BoardModel.objects.all()
     return render(request, "list.html",
                   {"object_list": object_list})  # object_listというキーでBoardModelのオブジェクトを参照できるよう第三引数に指定。
+
+
+def logoutfunc(request):
+    logout(request)
+    return redirect("login")
