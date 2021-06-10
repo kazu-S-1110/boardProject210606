@@ -7,5 +7,5 @@ urlpatterns = [
     path("login/", loginfunc, name="login"),
     path("list/", listfunc, name="list"),
     path("logout/", logoutfunc, name="logout"),
-    path("detail/<int:pk>", detailfunc, name="detail")
+    path("detail/<int:pk>", detailfunc, name="detail"),
 ]

@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% load static %}  {% block header %}
+<div class="alert btn-primary" role="alert">
+  <h2>Detail page</h2>
+</div>
+{% endblock header %} {% block content %} {% if user.is_authenticated %}
+<div class="container">
+  <div class="alert alert-success" role="alert">
+    <p>title :{{ obj.title }}</p>
+    <p>contributor : {{ obj.contributor }}</p>
+    <p><img src="{{ obj.user_image.url }}" width="300" >
+      
+    </p>
+  </div>
+</div>
+
+{% else %}
+<div class="container">
+  <h2>please login</h2>
+</div>
+{% endif %} {% endblock content %}
