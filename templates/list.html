@@ -16,9 +16,9 @@
   <div class="alert alert-info" role="alert">
     <p>title: {{item.title}} </p>
     <p>contributor: {{item.contributor}} </p>
-    <a href='{% url "detail" item.pk %}' class="btn btn-primary" role="button" aria-pressed="true">Detail</a>
-    <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">Good</a>
-    <a href="#" class="btn btn-info" role="button" aria-pressed="true">Be read</a>
+    <a href='{% url "detail" item.pk %}' class="btn btn-primary" role="button">Detail</a>
+    <a href="{% url 'good' item.pk %}" class="btn btn-secondary" role="button">Good: {{ item.good }}</a>
+    <a href="#" class="btn btn-info" role="button">Be read: {{ item.read }}</a>
 
   </div>  
   {% endfor %}

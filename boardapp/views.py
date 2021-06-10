@@ -53,3 +53,10 @@ def logoutfunc(request):
 def detailfunc(request, pk):
     obj = get_object_or_404(BoardModel, pk=pk)
     return render(request, "detail.html", {"obj": obj})
+
+
+def goodfunc(request, pk):
+    obj = BoardModel.objects.get(pk=pk)  # このコードはget_object_or_404と同じ（下位互換）
+    obj.good = obj.good + 1
+    obj.save()
+    return  redirect("list")
