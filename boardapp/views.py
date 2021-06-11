@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse_lazy
+from django.views.generic import CreateView
+
 from boardapp.models import BoardModel
 
 
@@ -72,3 +75,10 @@ def readfunc(request, pk):
         obj.readtext = obj.readtext + " " + username
         obj.save()
         return redirect("list")
+
+
+class Boardcreate(CreateView):
+    template_name = "create.html"
+    model = BoardModel
+    fields = ("title", "content", "contributor", "user_image")
+    success_url = reverse_lazy("list")
