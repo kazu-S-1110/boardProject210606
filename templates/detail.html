@@ -9,7 +9,7 @@
     <p>contributor : {{ obj.contributor }}</p>
     <p><img src="{{ obj.user_image.url }}" width="300" ></p>
     <a href="{% url 'good' obj.pk %}" class="btn btn-secondary" role="button">Good : {{ obj.good }}</a>
-    <a href="#" class="btn btn-info" role="button">Be read: {{ obj.read }}</a>
+    <a href="{% url 'read' obj.pk %}" class="btn btn-info" role="button">Be read: {{ obj.read }}</a>
   </div>
   <a href="{% url 'list' %}">Back to list</a>
 </div>

@@ -59,4 +59,16 @@ def goodfunc(request, pk):
     obj = BoardModel.objects.get(pk=pk)  # このコードはget_object_or_404と同じ（下位互換）
     obj.good = obj.good + 1
     obj.save()
-    return  redirect("list")
+    return redirect("list")
+
+
+def readfunc(request, pk):
+    obj = get_object_or_404(BoardModel, pk=pk)
+    username = request.user.get_username()  # ログインしているユーザの名前をとってくる。
+    if username in obj.readtext:
+        return redirect("list")
+    else:
+        obj.read = obj.read + 1
+        obj.readtext = obj.readtext + " " + username
+        obj.save()
+        return redirect("list")

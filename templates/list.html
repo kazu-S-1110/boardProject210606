@@ -18,7 +18,7 @@
     <p>contributor: {{item.contributor}} </p>
     <a href='{% url "detail" item.pk %}' class="btn btn-primary" role="button">Detail</a>
     <a href="{% url 'good' item.pk %}" class="btn btn-secondary" role="button">Good: {{ item.good }}</a>
-    <a href="#" class="btn btn-info" role="button">Be read: {{ item.read }}</a>
+    <a href="{% url 'read' item.pk %}" class="btn btn-info" role="button">Be read: {{ item.read }}</a>
 
   </div>  
   {% endfor %}
