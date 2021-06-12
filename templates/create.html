@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action=""
+  method="POST" enctype="multipart/form-data">{% csrf_token %}
+  <p>title:<input type="text" name='title'></p>
+  <p>content:<input type="text" name='content'></p>
+  <!-- input hidden属性とuser.usernameを用いてcontributorを自動で入力する -->
+  <input type="hidden" name='contributor' value="{{ user.username }}"> 
+
+  <p>image<input type="file" name="user_image"></p>
+
+
+
+  <input type="submit" value="create">
+
+
+
+
+
+</form>
+  
+{% endblock content %}

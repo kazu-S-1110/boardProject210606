@@ -10,5 +10,5 @@ urlpatterns = [
     path("detail/<int:pk>", detailfunc, name="detail"),
     path("good/<int:pk>", goodfunc, name="good"),
     path("read/<int:pk>", readfunc, name="read"),
-    path("create", BoardCreate.as_view(), name="create")
+    path("create/", BoardCreate.as_view(), name="create")
 ]

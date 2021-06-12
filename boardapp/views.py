@@ -77,7 +77,7 @@ def readfunc(request, pk):
         return redirect("list")
 
 
-class Boardcreate(CreateView):
+class BoardCreate(CreateView):
     template_name = "create.html"
     model = BoardModel
     fields = ("title", "content", "contributor", "user_image")
