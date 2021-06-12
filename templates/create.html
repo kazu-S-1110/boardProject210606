@@ -2,6 +2,7 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
 <form action=""
   method="POST" enctype="multipart/form-data">{% csrf_token %}
   <p>title:<input type="text" name='title'></p>
@@ -15,7 +16,12 @@
 
   <input type="submit" value="create">
 
-
+{% else %}
+<div class="container">
+  
+  <a href="{% url 'login' %}"><h3>please login</h3></a>
+</div>
+{% endif %}
 
 
 
