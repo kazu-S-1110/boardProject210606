@@ -10,7 +10,8 @@
   
 <body class="text-center">
   <form class="form-signin mt-5" method="POST">{% csrf_token %}
-    <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
+    <h1 class="h3 mb-3 font-weight-normal"><a href="{% url 'signup' %}"> Please login </a></h1>
+
     <h3>
       {{ context }}
 
