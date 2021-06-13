@@ -6,6 +6,7 @@
 <div class="container">
   <div class="alert alert-success" role="alert">
     <p>title :{{ obj.title }}</p>
+    <p>content : {{ obj.content }}</p>
     <p>contributor : {{ obj.contributor }}</p>
     <p><img src="{{ obj.user_image.url }}" width="300" ></p>
     <a href="{% url 'good' obj.pk %}" class="btn btn-secondary" role="button">Good : {{ obj.good }}</a>

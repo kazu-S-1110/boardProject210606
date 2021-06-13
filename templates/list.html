@@ -10,6 +10,7 @@
 {% endblock header %}
 
 {% block content %}
+<a class="btn btn-primary" href="{% url 'create' %}" role="button">Create article</a>
 <!-- {% if user.is_authenticated %} -->
 <div class="container">
   {% for item in object_list %}
