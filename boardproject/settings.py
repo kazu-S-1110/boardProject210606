@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-gbl++)rtv@bsi7&2-wifrmza_^ibujewl6(o&oyq!_cuwg!&6_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["boardproject-django210606.herokuapp.com"]
+ALLOWED_HOSTS = ["boardproject-django210606.herokuapp.com","127.0.0.1"]
 
 # Application definition
 
@@ -113,9 +113,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'  # アクセスする際のURL
-STATIC_ROOT = BASE_DIR / "staticfiles"  # デプロイした際の静的ファイルの保存先(開発時では使わない。static_dirsと同じ名前だとエラーを吐く。# )
+STATIC_ROOT = BASE_DIR / "static"  # デプロイした際の静的ファイルの保存先(開発時では使わない。static_dirsと同じ名前だとエラーを吐く?。# )
 
-STATICFILES_DIRS = [str(BASE_DIR / "static")]  # 静的ファイルの保存先は開発時、複数あると便利な場合がある。その際に書くコード。
+# STATICFILES_DIRS = [str(BASE_DIR / "staticfiles")]  # 静的ファイルの保存先は開発時、複数あると便利な場合がある。その際に書くコード。
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
